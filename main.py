@@ -63,7 +63,7 @@ class SnakeAI:
         game_over = False
 
         # check collisions
-        if self.check_collisions() or self.frame_iteration > 100 * len(self.snake):
+        if self.check_collisions(self.snake[0]) or self.frame_iteration > 100 * len(self.snake):
             game_over = True
             reward = -10
             return reward, game_over, self.score
@@ -113,14 +113,14 @@ class SnakeAI:
 
         self.velocity = new_dir
 
-    def check_collisions(self):
+    def check_collisions(self, head):
         for i in range(1, len(self.snake) - 1):
-            if self.snake[0][0] == self.snake[i][0] and self.snake[0][1] == self.snake[i][1]:
+            if head[0] == self.snake[i][0] and head[1] == self.snake[i][1]:
                 return True
 
-        if self.snake[0][0] < 0 or self.snake[0][0] > self.NB_CASES - 1:
+        if head[0] < 0 or head[0] > self.NB_CASES - 1:
             return True
-        if self.snake[0][1] < 0 or self.snake[0][1] > self.NB_CASES - 1:
+        if head[1] < 0 or head[1] > self.NB_CASES - 1:
             return True
 
     def update_snake(self):

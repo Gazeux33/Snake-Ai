@@ -61,7 +61,7 @@ class Agent:
             game.food_pos[1] > y,  # food down
 
         ]
-        print("State:", state)
+        #print("State:", state)
         return np.array(state, dtype=int)
 
     def remember(self, state, action, reward, next_state, done):
@@ -125,7 +125,7 @@ def train():
             total_score += score
             mean_score = total_score / agent.n_games
             plot_mean_scores.append(mean_score)
-            plot(plot_score, plot_mean_scores)
+            #plot(plot_score, plot_mean_scores)
 
 
 if __name__ == "__main__":

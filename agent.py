@@ -3,7 +3,7 @@ import random
 import numpy as np
 from collections import deque
 
-from main import SnakeAI, Direction
+from game import SnakeAI, Direction
 from model import Linear_Qnet, QTrainer
 from helper import plot
 
@@ -22,7 +22,7 @@ class Agent:
         self.trainer = QTrainer(self.model, LR, self.gamma)
 
     def get_state(self, game):
-        head = game.snake[0]
+        x, y = game.snake[0]
 
         dir_l = game.velocity == Direction.LEFT
         dir_r = game.velocity == Direction.RIGHT
@@ -30,23 +30,38 @@ class Agent:
         dir_d = game.velocity == Direction.DOWN
 
         state = [
-            dir_l and game.check_collisions([head[0] - 1, head[1]]),  # danger left
-            dir_r and game.check_collisions([head[0] + 1, head[1]]),  # danger right
-            dir_u and game.check_collisions([head[0], head[1] - 1]),  # danger up
-            dir_d and game.check_collisions([head[0], head[1] + 1]),  # danger down
+            # danger left
+            dir_l and game.check_collisions([x, y + 1]) or
+            dir_r and game.check_collisions([x, y - 1]) or
+            dir_u and game.check_collisions([x - 1, y]) or
+            dir_d and game.check_collisions([x + 1, y]),
 
+            # danger right
+            dir_l and game.check_collisions([x, y - 1]) or
+            dir_r and game.check_collisions([x, y + 1]) or
+            dir_u and game.check_collisions([x + 1, y]) or
+            dir_d and game.check_collisions([x - 1, y]),
+
+            # danger up
+            dir_l and game.check_collisions([x - 1, y]) or
+            dir_r and game.check_collisions([x + 1, y]) or
+            dir_u and game.check_collisions([x, y - 1]) or
+            dir_d and game.check_collisions([x, y + 1]),
+
+            # direction
             dir_l,
             dir_r,
             dir_u,
             dir_d,
 
-            game.food_pos[0] < head[0],  # food left
-            game.food_pos[0] > head[0],  # food right
-            game.food_pos[1] < head[1],  # food up
-            game.food_pos[1] > head[1],  # food down
+            # food position
+            game.food_pos[0] < x,  # food left
+            game.food_pos[0] > x,  # food right
+            game.food_pos[1] < y,  # food up
+            game.food_pos[1] > y,  # food down
 
         ]
-
+        print("State:", state)
         return np.array(state, dtype=int)
 
     def remember(self, state, action, reward, next_state, done):
@@ -110,7 +125,7 @@ def train():
             total_score += score
             mean_score = total_score / agent.n_games
             plot_mean_scores.append(mean_score)
-            #  plot(plot_score, plot_mean_scores)
+            plot(plot_score, plot_mean_scores)
 
 
 if __name__ == "__main__":

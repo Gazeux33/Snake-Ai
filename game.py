@@ -123,6 +123,8 @@ class SnakeAI:
         if head[1] < 0 or head[1] > self.NB_CASES - 1:
             return True
 
+        return False
+
     def update_snake(self):
         self.right_shift()
         if self.velocity == Direction.RIGHT:
@@ -133,7 +135,6 @@ class SnakeAI:
             self.snake[0][1] += 1
         elif self.velocity == Direction.UP:
             self.snake[0][1] -= 1
-
 
     def draw_snake(self):
         for part in range(len(self.snake) - 1):
@@ -172,6 +173,7 @@ class SnakeAI:
         pygame.draw.rect(self.display_surface, (255, 0, 0), rect)
 
 
+"""
 if __name__ == "__main__":
     game = SnakeAI()
     actions = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
@@ -183,4 +185,4 @@ if __name__ == "__main__":
         if game_over:
             break
     print(f"Score finale: {score}, reward: {reward}")
-
+"""

@@ -76,9 +76,7 @@ class SnakeAI:
             self.score += 1
             self.add_part()
             reward = 10
-            print(self.score)
 
-        self.FramePerSec.tick(10)
         pygame.display.flip()
 
         return reward, game_over, self.score

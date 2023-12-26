@@ -6,6 +6,10 @@ avec l'environement du jeu.
 
 Dans ce projet j'ai appris:
 
-* Deep Q-Learning: qui est l'apprentassage par renforcement avec des reseaux de neuronnes
+* Deep Q-Learning: qui est l'apprentissage par renforcement avec des reseaux de neuronnes
 * PyTorch
 * Pygame
+
+Pour ce projet j'ai utilisé un model Sequentiel fournit pas PyTorch constitué de :
+11 neurones sur la couche d'entrée
+3 neurones sur la couche de sortie 

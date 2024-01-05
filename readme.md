@@ -13,3 +13,6 @@ Dans ce projet j'ai appris:
 Pour ce projet j'ai utilisé un model Sequentiel fournit pas PyTorch constitué de :
 11 neurones sur la couche d'entrée
 3 neurones sur la couche de sortie 
+256 neurones sur la couche cachée
+
+

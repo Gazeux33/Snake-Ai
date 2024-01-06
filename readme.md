@@ -15,6 +15,6 @@ Pour ce projet j'ai utilisé un model Sequentiel fournit pas PyTorch constitué 
 3 neurones sur la couche de sortie 
 256 neurones sur la couche cachée
 
-![Texte alternatif](https://imgur.com/IEKftHY)
+[Imgur](https://i.imgur.com/IEKftHY.mp4)
 
 

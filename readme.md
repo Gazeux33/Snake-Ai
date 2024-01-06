@@ -17,6 +17,6 @@ Pour ce projet j'ai utilisé un model Sequentiel fournit pas PyTorch constitué 
 
 ![Imgur](https://i.imgur.com/HVXJ12G.gif)
 
-![Imgur](https://imgur.com/fFfG4xu)
+![Imgur](https://i.imgur.com/fFfG4xu.png)
 
 
